@@ -14,7 +14,8 @@ var myLatLng = {lat: {{lat}}, lng: {{lng}} };
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 var marker = new google.maps.Marker({
     position: myLatLng,
-    title:"Hello World!"
+    title:"ISS",
+	icon: '/static/iss.png'
 });
 marker.setMap(map)
 }
