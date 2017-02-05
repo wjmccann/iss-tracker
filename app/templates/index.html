@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+<title> ISS Tracker </title>
+</head>
 <body>
 
 <div id="googleMap" style="width:100%;height:800px;"></div>
@@ -23,13 +26,21 @@ $(document).ready(function() {
 		});
 		marker.setMap(map)
 		
+		var cookieTrail;
+		
 		function refreshMarker(){
 		$.ajax({
             type: "GET",
             url: "/getloc",
 			delay: 10000,
             success: function(data) {
-                    marker.setPosition(new google.maps.LatLng(data.lat, data.lng));
+					marker.setPosition(new google.maps.LatLng(data.lat, data.lng));
+					cookieTrail = new google.maps.Marker({
+                    position: new google.maps.LatLng(data.lat, data.lng),
+					icon: "/static/trail.png",
+					});
+					cookieTrail.setMap(map)
+                    
             }
         });
 		}
